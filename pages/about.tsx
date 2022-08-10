@@ -1,10 +1,11 @@
+import React from "react";
 import NavBar from "../components/NavBar";
 
-export default function home() {
+export default function about() {
   return (
     <div>
       <NavBar />
-      <h2>여기가 Home</h2>
+      <h2>about</h2>
     </div>
   );
 }

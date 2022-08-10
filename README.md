@@ -31,3 +31,39 @@ clean code를 생각하며 연습을 해보자.
 React와 Next로 만든 웹페이지에서 브라우저에 JS읽기 기능을 끄면 볼 수 있다.
 react는 JS코드를 읽어야 하기 때문에 화면이 보이지 않고 기능을 키라는 문구가 뜬다.
 Next는 동적으로 동작하지는 않지만 HTML은 화면에 보이게 된다.
+
+## Anchor 사용은 안하는게 좋다.
+
+- React와 마찬가지로 새로고침이 포함되어있는 a태그로 이동하는 것은 좋은 방식이 아니다.
+- import Link from "link/next를 선언하고 <Link></Link>를 사용하자
+
+## CSS 적용 방법
+
+- inline-style : JSX 태그에 직접 입력하는 방법
+- modules : next.js에 module 방식
+  - css 파일 명을 XXX.module.css으로 작성 XXX는 선택
+  - import styles from "./XXX.mpdule.css" 선언
+  - jsx 태그에 className={styles.XXX} 작성 XXX는 css 파일에 클래스 명
+  - 여러개의 style을 입력할 경우 전체를 문자열로 표시하는 방법과 배열 2가지 방법 등이 있다. 두 클래스 명에 공백만 추가하면 그만
+    - className={\`${styles.nav}${styles.active}\`}
+    - className = {[styles.nav, styles.active].join(" ")}
+  * style jsx : \<style\ jsx>{\`style 작성\`}<\/style\>
+
+#### 특징
+
+- modules.css가 아닌 .css파일은 import 할 수 없다. 단, 아래에 설명하는 \_app.tsx/jsx에서는 가능하다.
+
+#### 전역 CSS 설정하는 방법
+
+- 하나의 페이지에서만 전역 CSS 작성하기
+  - style jsx에서 jsx global 넘기기. 단, 페이지에 한해 적용된다. 즉 페이지가 변경되면 의미가 없다.
+- App component 추가하기
+  - \_app.js / ts 추가하기 - 모든 렌더링에 포함하여 렌더링하는 파일
+  - global CSS import 또는 style jsx global로 지정하기
+
+## 훅
+
+### useRouter
+
+- 주소 정보를 받아올 수 있는 훅
+- console.log를 찍어보자 다양한 주소 정보가 담겨있다.
